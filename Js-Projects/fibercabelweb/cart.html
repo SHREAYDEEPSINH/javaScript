@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- font awesome cdn  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- css link  -->
+    <link rel="stylesheet" href="/index.css">
+    <!-- internal css  -->
+    <style>
+        .productcardmain>div>button {
+            width: 120px;
+        }
+
+        .productcardmain div :nth-child(4) {
+            border-radius: 10px;
+            padding: 0px;
+        }
+
+        .productcardmain div :nth-child(5) {
+            border-radius: 10px;
+            padding: 0px;
+            border: 3px solid #830b31;
+            color: #830b31;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- second header  -->
+        <nav class="head2">
+            <div class="container secondhead d-flex justify-content-between align-items-center">
+                <div class="logo" data-aos="fade-right" data-aos-duration="700">
+
+                    <img height="60px"
+                        src="/image/82741997-3191-4fb6-83f6-ebfdde2246c1.__CR0,74,3508,1052_PT0_SX600_V1___.jpg" alt="">
+
+                </div>
+
+                <div class="d-none d-lg-inline">
+                    <h2 class="color-myred fs-1">SHOPPING CART</h2>
+                </div>
+                <div data-aos="fade-left" data-aos-duration="700">
+                    <a href="/login.html"><i class="fa-solid fa-user fa-xl fs-3 d-lg-none color-mygray"></i></a>
+                    <a href="/cart.html"><i
+                            class="fa-solid fa-cart-shopping fa-xl fs-3 ms-lg-4 ms-md-4 ms-2 color-mygray effect"></i></a>
+                    <a href="/wishList.html"><i class="fa-solid fa-heart fa-xl fs-3 ms-lg-4 ms-md-4 ms-2 color-mygray effect"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- third header  -->
+        <nav class="navbar head3 navbar-expand-lg bggradiant p-0">
+            <div class="container thirdheader w-100">
+                
+                <div class="d-lg-none">
+                    <h2 class="text-white m-0 fs-2">SHOPPING CART</h2>
+                </div>
+
+                <button data-aos="fade-left" data-aos-duration="700" class="navbar-toggler bg-white m-2 threeline"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon threelinespan"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav w-100 me-auto d-flex  justify-content-between align-items-center ">
+
+                        <li class="nav-item dropdown p-lg-2 navbar-drop bgcolor-mygray" data-aos="fade-right">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                CATEGORIES
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">...</a></li>
+                                <li><a class="dropdown-item" href="#">...</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">...</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item  p-lg-2 navlimain" data-aos="fade-left">
+                            <a class="nav-link active text-white navunderline" aria-current="page" href="/index.html">HOME</a>
+                        </li>
+                        <li class="nav-item p-lg-2 navlimain" data-aos="fade-left">
+                            <a class="nav-link active text-white navunderline" aria-current="page" href="/index.html">PRODUCTS</a>
+                        </li>
+                        <li class="nav-item p-lg-2 navlimain" data-aos="fade-left">
+                            <a class="nav-link active text-white navunderline" aria-current="page" href="/index.html">VIDEO</a>
+                        </li>
+                        <li class="nav-item p-lg-2 navlimain" data-aos="fade-left">
+                            <a class="nav-link active text-white navunderline" aria-current="page" href="/index.html">ABOUT US</a>
+                        </li>
+                        <li class="nav-item p-lg-2 navlimain" data-aos="fade-left">
+                            <a class="nav-link active text-white navunderline" aria-current="page" href="/index.html">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="productcardmain">
+
+        </div>
+    </main>
+</body>
+
+</html>
+<script>
+
+    let data = JSON.parse(localStorage.getItem("cartItem")) || [];
+    let homemainDiv = document.querySelector(".productcardmain");
+
+    let rendeingFunction = () => {
+        homemainDiv.innerHTML = "";
+        data.forEach((ele, index) => {
+            console.log(ele);
+
+            let boxDiv = document.createElement("div");
+            let img = document.createElement("img");
+            img.src = ele.image;
+
+            let h3 = document.createElement("h3");
+            h3.innerText = ele.title;
+
+            let p = document.createElement("p");
+            p.innerText = `Rs ${ele.price}`;
+
+            let cartBtn = document.createElement("button");
+            cartBtn.innerText = "Remove";
+
+            let buyBtn = document.createElement("button");
+            buyBtn.innerText = "Buy Now";
+
+            cartBtn.onclick = () => {
+                addToCartHandler(index);
+            }
+
+            boxDiv.append(img, h3, p, cartBtn, buyBtn);
+            homemainDiv.append(boxDiv);
+
+        });
+
+    }
+
+
+    let addToCartHandler = (index) => {
+        data.splice(index, 1);
+        localStorage.setItem("cartItem", JSON.stringify(data));
+        rendeingFunction();
+    }
+    rendeingFunction();
+
+</script>
+
+<!-- bootstrap cdn  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>

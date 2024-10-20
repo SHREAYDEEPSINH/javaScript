@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: rgb(211, 149, 149);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(219, 160, 160);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <!-- signup start  -->
+        <div class="singupMainDiv">
+            <h2>Signup Form</h2>
+            <form class="signupformMain">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <button type="submit">Signup</button>
+                <p>Already have an account? Please <a href="./login.html">Login</a></p>
+            </form>
+        </div>
+        <!-- signup end  -->
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let singUpForm = document.querySelector(".signupformMain")
+    let userName = document.querySelector("#username");
+    let userEmail = document.querySelector("#email");
+    let userPassword = document.querySelector("#password");
+    let singupMainDiv = document.querySelector(".singupMainDiv");
+    // console.log(singupMainDiv)
+
+    console.log(userName, userEmail, userPassword);
+
+    let usersArr = JSON.parse(localStorage.getItem("user")) || [];
+
+    singUpForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let name = userName.value.trim();
+        let email = userEmail.value.trim();
+        let password = userPassword.value.trim();
+
+        if (name && email && password) {
+
+            let isUserInfo = usersArr.some((ele, index) => {
+                return ele.email === email;
+            })
+            if (!isUserInfo) {
+                let newUserObj = {
+                    name: name,
+                    email: email,
+                    password: password
+                }
+                usersArr.push(newUserObj);
+                localStorage.setItem("user", JSON.stringify(usersArr));
+                window.location.href = "login.html";
+            } else {
+                alert("allredy existed");
+            }
+
+        } else {
+            alert("fill form");
+        }
+
+    })
+</script>

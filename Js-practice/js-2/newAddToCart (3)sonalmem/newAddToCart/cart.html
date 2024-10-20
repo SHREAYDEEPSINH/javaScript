@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="cart-container">
+        <h1>Cart page</h1>
+        <div class="render-cart">
+        </div>
+    </div>
+    <script>
+        let showCartItems = JSON.parse(localStorage.getItem("cartItems"))
+        let cartContainer = document.querySelector(".render-cart")
+        let renderCartPage = () => {
+            showCartItems.forEach((ele, idx) => {
+                let showProductDiv = document.createElement("div")
+                // showProductDiv.classList.add("product-container")
+                // product name creation start 
+                let nameDiv = document.createElement("span")
+                nameDiv.innerText = `${ele.name}`
+                showProductDiv.append(nameDiv)
+                // product name creation end
+                // product price creation start 
+                let price = document.createElement("span")
+                price.innerText = `${ele.price}`
+                showProductDiv.append(price)
+                 // product price creation end
+                //  button start
+                let addToCartBtn = document.createElement("button")
+                addToCartBtn.innerText = "remove from cart"
+                showProductDiv.append(addToCartBtn)
+                  //  button end 
+                cartContainer.append(showProductDiv)
+            })
+        }
+        renderCartPage()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Input and Buttons</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .mainSection {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-div {
+            width: 35%;
+            border: 2px solid rgb(85, 156, 160);
+            border-radius: 5px;
+            padding: 30px;
+            margin: auto;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: calc(100% - 22px);
+            border-radius: 5px;
+            border: 2px solid rgb(196, 232, 234);
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(0, 138, 145);
+            color: white;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: rgb(85, 156, 160);
+        }
+
+        #display {
+            height: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            padding: 20px 10px;
+            background-color: rgb(196, 232, 234);
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="mainSection">
+        <div class="main-div">
+            <input type="text" id="inputText" placeholder="Enter text here">
+
+            <button id="upperCase">UpperCase</button>
+            <button id="lowerCase">LowerCase</button>
+            <button id="clearText">Clear Text</button>
+            <button id="copyText">Copy Text</button>
+            <button id="removeSpace">Remove Extra Space</button>
+
+            <div id="display"></div>
+            <div class="alpha"></div>
+            <div class="words"></div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+<!-- js -->
+<!-- <script>
+    const input = document.querySelector("#inputText");
+    const display = document.querySelector("#display");
+
+    const actions = {
+        upperCase: () => input.value.toUpperCase(),
+        lowerCase: () => input.value.toLowerCase(),
+        clearText: () => "",
+        copyText: () => { input.select(); document.execCommand('copy'); return input.value; },
+        countWords: () => input.value.trim().split(/\s+/g).length,
+        countAlphabet: () => (input.value.match(/[a-zA-Z]/g) || []).length,
+        removeSpace: () => input.value.replace(/\s+/g, "")
+    };
+
+    document.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const action = actions[btn.id];
+            if (action) display.innerText = action();
+        });
+    });
+</script> -->
+<!-- <script>
+
+    let input = document.querySelector("#inputText");
+
+    let upperCaseBtn = document.querySelector("#upperCase");
+    let lowerCaseBtn = document.querySelector("#lowerCase");
+    let clearTextBtn = document.querySelector("#clearText");
+    let copyTextBtn = document.querySelector("#copyText");
+    let removeSpaceBtn = document.querySelector("#removeSpace");
+
+    let display = document.querySelector("#display")
+    let alphabet=document.querySelector(".alpha")
+    let words=document.querySelector(".words")
+
+    // console.log(input, upperCaseBtn, lowerCaseBtn, clearTextBtn, removeSpaceBtn, display);
+
+
+    upperCaseBtn.addEventListener("click", () => {
+        let upper = input.value.toUpperCase();
+        display.innerText = upper;
+    })
+
+    lowerCaseBtn.addEventListener("click", () => {
+        let lower = input.value.toLowerCase();
+        display.innerText = lower;
+    })
+
+    clearTextBtn.addEventListener("click", () => {
+        display.innerText = "";
+    })
+
+    copyTextBtn.addEventListener("click", () => {
+        input.select();
+        document.execCommand('copy');
+    })
+
+
+    input.addEventListener("input", () => {
+        let countWords=input.value.trim().split(/\s+/g).length;
+        words.innerText=`Total Words : ${countWords}`;
+    })
+    
+    input.addEventListener("input", () => {
+
+        let countAlphabet=input.value.match(/[a-zA-Z]/g)?.length || 0;
+        alphabet.innerText=`Total Alphabet : ${countAlphabet}`;
+
+        // or 
+
+        // let countAlphabet = input.value.replace(/\s+/g,"").length;
+        // display.innerText=countAlphabet; 
+
+    })
+
+
+
+    removeSpaceBtn.addEventListener("click", () => {
+        let remove = input.value.replace(/\s+/g,"");
+        display.innerText = remove;
+        console.log(remove);
+    })
+
+
+
+</script> -->
+
+<script>
+    let innerText = document.querySelector("#inputText");
+    let display = document.querySelector("#display");
+    let alphabetCount = document.querySelector(".alpha");
+    let wordsCount = document.querySelector(".words");
+
+    let buttonObj = {
+        upperCase: () => innerText.value.toUpperCase(),
+        lowerCase: () => innerText.value.toLowerCase(),
+        clearText: () => "",
+        copyText: () => { innerText.select(); document.execCommand('copy'); return innerText.value; },
+        removeSpace: () => innerText.value.replace(/\s+/g, "")
+    }
+
+    let allBtn = document.querySelectorAll("button");
+
+    allBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let action = buttonObj[btn.id];
+            console.log(buttonObj[btn.id]);
+
+            if (action) display.innerText = action()
+        })
+    }) 
+
+    innerText.addEventListener("input", () => {
+        if (innerText.value == "") {
+            wordsCount.innerText = `Total Words: ${0}`;
+            alphabetCount.innerText = `Total Alphabet: ${0}`;
+        } else {
+            let text = innerText.value;
+            wordsCount.innerText = `Total Words: ${text.trim().split(/\s+/).length}`;
+            alphabetCount.innerText = `Total Alphabet: ${(text.match(/[a-zA-Z]/g) || []).length}`;
+        }
+    })
+</script>

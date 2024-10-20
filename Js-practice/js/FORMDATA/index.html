@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name"></label>
+        <input type="text" placeholder="enter your name :"  id="name" >
+        <button id="btn">submit</button>
+    </form>
+</body>
+</html>
+
+<script>
+
+let n=document.getElementById("name");
+let submit=document.getElementById("btn");
+
+submit.addEventListener("click",function(e){
+    e.preventDefault();
+    let data=n.value;
+    console.log(data);
+   
+    
+})
+
+
+
+</script>

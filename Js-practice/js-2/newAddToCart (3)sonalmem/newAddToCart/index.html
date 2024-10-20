@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- signup start  -->
+        <h1 class="signup-header" style="display: none;">Signup</h1>
+        <form class="signup-form" style="display: none;">
+            <input type="text" class="signup-name" placeholder="Enter Name">
+            <input type="email" class="signup-email" placeholder="Enter email">
+            <input type="password" class="signup-password" placeholder="Enter password">
+            <button type="submit" class="signup-button">Signup</button>
+            <p>Already have an account? Please <a href="#" class="login-btn">Login</a></p>
+        </form>
+        <!-- signup end  -->
+        <!-- login form start  -->
+        <h1 class="login-header">Login</h1>
+        <form class="login-form">
+            <input type="email" class="login-email" placeholder="Enter email">
+            <input type="password" class="login-password" placeholder="enter password">
+            <button class="login-button">Login</button>
+            <p>Dont have an account <a href="#" class="signup-btn">Signup</a> </p>
+        </form>
+        <!-- login form end  -->
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
