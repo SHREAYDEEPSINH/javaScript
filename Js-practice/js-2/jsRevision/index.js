@@ -76,6 +76,14 @@
 
 
 
+// var a= [10,20,30]
+// var bag= []
+// for(var i=a.length-1; i>=0 ;i--){
+//     bag.push(a[i])
+// }
+// console.log(bag)
+
+
 
 
 // // Math.ceil ,floor ,round 
@@ -319,10 +327,152 @@
 
 
 
-var date=new Date();
-console.log(date)
+// var date=new Date();
+// console.log(date)
 
-var b=date.getMilliseconds();
-console.log(b);
+// var b=date.getMilliseconds();
+// console.log(b);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// pattern 
+// var bag = []
+// for(var i=1 ; i<=5 ;i++){
+//     bag.push("* ")
+// }
+// console.log(bag)
+
+// var bag=" ";
+// for(var i=1 ; i<=5 ; i++){
+//     bag+="* "
+//     console.log(bag)
+// }
+
+
+
+// for(var i=0 ; i<5 ;i++){
+//     var bag = " "
+//     for(var j=0 ; j<5 ;j++){
+//       if(i==0 || j==0 || i==4 || j==4){
+//           bag+="* "
+//       }else{
+//         bag+="  "
+//       }
+//     }
+//     console.log(bag)
+// }
+
+
+
+// let name = "shreay     ";
+// let newName = name.trim().toUpperCase().slice(0,4)
+// console.log(newName)
+
+
+// for(let i=0; i<=5 ; i++){
+//     let row= ""
+//     for(let j=0 ; j<=i ; j++){
+//         row+=j+" "
+//     }
+//     console.log(row)
+// }
+
+
+
+// let a=["one" ,"two" ,"three"]
+// let b = [...a]
+
+// console.log(b,"b is")
+
+// a.push("four")
+// console.log(a ,"after");
+// console.log(b ,"after");
+
+
+// function sum(){
+//     return function printHello(){
+//         console.log("hello")
+//     }
+// }
+// let ans=sum()
+// ans() 
+
+
+
+
+// find
+
+// let arr = [1,2,3,4,5,6,7,8,9,12]
+// let ans = arr.find((ele,ind,arr)=>{
+//     return ele === 12 ;
+// })
+// console.log(ans)
+
+
+// some
+
+
+// let arr = [1,3,5,7,9,10]
+// let ans = arr.some((ele , ind , arr)=>{
+//     return ele%2==0
+// })
+// console.log(ans)
+
+
+
+// findIndex
+
+// let arr = [1,2,3,4,5,6,7,8,9,10]
+// let ans = arr.findIndex((ele,ind,arr)=>{
+//     return ele === 5 ;
+// })
+// console.log(ans)
+
+
+// object 
+
+// let person = {
+//     name : "sonal",
+//     address : "delhi",
+//     profession : "teaching"
+// }
+// //for in
+// for(let key in person){
+//     console.log(`${key} : ${person[key]}`)
+// }
+
+// console.log(Object.keys(person))
+// // for of
+// for(let key of Object.keys(person)){
+//     console.log(`${key} : ${person[key]}`)
+// }
+
+// console.log(Object.values(person))
+
+
+
+
+// prtotype 
+
+function hello(){
+    console.log("hello");
+}
+hello.prototype.key="shrey"
+hello.prototype.key1="deep"
+console.log(hello.prototype)
+console.log(typeof hello)

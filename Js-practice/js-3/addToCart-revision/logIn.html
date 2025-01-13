@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="logInForm">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>
+
+<script>
+    let logInForm = document.querySelector("#logInForm")
+    let email = document.querySelector("#email")
+    let password = document.querySelector("#password")
+
+
+    let users = JSON.parse(localStorage.getItem("SingUpUser")) || []
+
+
+    logInForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+
+
+        if (email.value && password.value) {
+
+            let currentUser = users.find((ele, ind) => {
+                return ele.email == email.value
+            })
+            if (currentUser) {
+                if (currentUser.password == password.value) {
+                    localStorage.setItem("currentUser", JSON.stringify(currentUser))
+                    alert("login")
+                    window.location.href="index.html"
+                } else {
+                    alert("wrong password")
+                }
+            } else {
+                alert("email not found")
+            }
+        }else{
+            alert("enter details")
+        }
+
+    })
+
+
+
+</script>

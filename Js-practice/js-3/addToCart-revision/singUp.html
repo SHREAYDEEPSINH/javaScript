@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="singUpForm">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">SingUp</button>
+    </form>
+</body>
+
+</html>
+
+
+<script>
+    let singUpForm = document.querySelector("#singUpForm")
+    let name = document.querySelector("#name")
+    let email = document.querySelector("#email")
+    let password = document.querySelector("#password")
+
+    
+
+    let arr = JSON.parse(localStorage.getItem("SingUpUser")) || []
+    singUpForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+
+        if(email.value && name.value && password.value){
+
+            let isUserInfo = arr.find((ele) => {
+                return ele.email == email.value
+            })
+            if (!isUserInfo) {
+    
+                let obj = {
+                    name: name.value.trim(),
+                    email: email.value.trim(),
+                    password: password.value.trim()
+                }
+                arr.push(obj)
+                localStorage.setItem("SingUpUser", JSON.stringify(arr))
+                window.location.href="login.html"
+            }else{
+                alert("email already existed")
+            }
+        }else{
+            alert("first fill details")
+        }
+
+        name.value = ""
+        email.value = ""
+        password.value = ""
+    })
+
+
+
+
+
+</script>
